@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporizador de 3 minutos</title>
+    <script>
+        // Temporizador de 3 minutos
+        var timeLeft = 180; // 3 minutos en segundos
+
+        function countdown() {
+            var minutes = Math.floor(timeLeft / 60);
+            var seconds = timeLeft % 60;
+            if (seconds < 10) seconds = '0' + seconds;
+            document.getElementById('timer').innerHTML = minutes + ":" + seconds;
+            if (timeLeft <= 0) {
+                clearTimeout(timerId);
+                alert("¡El tiempo ha terminado!");
+                window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSeGZn99WkiQwjazebUsNLNxfj1td0GVQEjVsolZlhdhGAlASw/viewform?usp=sf_link"; // URL de tu formulario
+            } else {
+                timeLeft--;
+                var timerId = setTimeout(countdown, 1000);
+            }
+        }
+        window.onload = countdown;
+    </script>
+</head>
+<body>
+    <h1>Temporizador de 3 minutos</h1>
+    <p>Completa el formulario en el tiempo indicado. El tiempo restante es: <span id="timer">3:00</span></p>
+</body>
+</html>
